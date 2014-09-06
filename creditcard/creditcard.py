@@ -22,7 +22,24 @@ def break_digits(number):
 		count += 1
 	digits.reverse()
 	return digits
+	
+# [Integer] -> [Integer]
+# Double every other digit beginning from the right.
+def double_every_other(digits):
+	size = len(digits)
+	count = 1
+	digits.reverse()
+	
+	while count < size:
+		if count % 2 == 0:
+			digits[count] = 2 * digits[count]
+		count += 1
 
-print last_digit(cc_number)
-print drop_last_digit(cc_number)
+	digits.reverse()
+	return digits
+	
+
+print "Last digit: ", last_digit(cc_number)
+print "Number with last digit dropped: ", drop_last_digit(cc_number)
 print break_digits(cc_number)
+print double_every_other(break_digits(cc_number))
