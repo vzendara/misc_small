@@ -1,4 +1,5 @@
 cc_number = 4012888888881881
+bad_cc_number = 4012888888881882
 
 # Integer -> Integer
 def last_digit(number):
@@ -37,9 +38,33 @@ def double_every_other(digits):
 
 	digits.reverse()
 	return digits
-	
+
+# [Integer] -> Integer
+def sum_digits(digits):
+	result = 0
+	for digit in digits:
+		result += digit
+	return result
+
+# Integer -> Bool	
+def validate(cc_num):
+	if sum_digits(double_every_other(break_digits(cc_num))) % 10 == True:
+		return True
+	else:
+		return False
+
 
 print "Last digit: ", last_digit(cc_number)
 print "Number with last digit dropped: ", drop_last_digit(cc_number)
-print break_digits(cc_number)
-print double_every_other(break_digits(cc_number))
+
+digits = break_digits(cc_number)
+print digits
+
+every_other_doubled = double_every_other(digits)
+print every_other_doubled
+
+sum_of_digits = sum_digits(every_other_doubled)
+print sum_of_digits
+
+print validate(cc_number) # Expect True
+print validate(bad_cc_number) # Expect False
